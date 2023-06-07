@@ -25,9 +25,7 @@ const NavBar = () => {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Navbar.Link
-
-                >
+                <Navbar.Link>
                     <ActiveLink to="/">
                         Home
                     </ActiveLink>
@@ -37,8 +35,10 @@ const NavBar = () => {
                         Instructors
                     </p>
                 </Navbar.Link>
-                <Navbar.Link href="#">
-                    Classes
+                <Navbar.Link>
+                    <ActiveLink to="/classes">
+                        Classes
+                    </ActiveLink>
                 </Navbar.Link>
                 <Navbar.Link href="#">
                     Dashboard
