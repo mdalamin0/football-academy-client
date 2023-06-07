@@ -1,13 +1,19 @@
 import { Navbar } from 'flowbite-react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import ActiveLink from '../../../Components/ActiveLink/ActiveLink';
 
 
 
 const NavBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOutUser } = useContext(AuthContext);
 
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then()
+            .catch(error => console.log(error))
+    }
     return (
         <Navbar className='my-5'>
             <Navbar.Brand >
@@ -20,11 +26,11 @@ const NavBar = () => {
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <Navbar.Link
-                    
+
                 >
-                    <Link to="/">
+                    <ActiveLink to="/">
                         Home
-                    </Link>
+                    </ActiveLink>
                 </Navbar.Link>
                 <Navbar.Link href="#">
                     <p>
@@ -38,12 +44,16 @@ const NavBar = () => {
                     Dashboard
                 </Navbar.Link>
                 {user ?
-                    <Navbar.Link>
-                        <img title={user?.displayName} src={user?.photoURL} alt="" />
-                    </Navbar.Link> :
-                    <Navbar.Link >
-                        <Link to="/login"><button className='btn btn-primary'>Login</button></Link>
-                    </Navbar.Link>
+
+                    <>
+                        <Navbar.Link>
+                            <button onClick={handleLogOut}>Log Out</button>
+                        </Navbar.Link>
+                        <img className='h-10 w-10 rounded-full' title={user?.displayName} src={user?.photoURL} alt="" />
+                    </>
+                    :
+
+                    <ActiveLink to="/signUp"><button className='btn btn-primary'>Sign Up</button></ActiveLink>
                 }
             </Navbar.Collapse>
 

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -34,12 +35,12 @@ const Login = () => {
                 form.reset()
             })
             .catch(error => {
-                if(error.message === 'Firebase: Error (auth/user-not-found).'){
+                if (error.message === 'Firebase: Error (auth/user-not-found).') {
                     setEmailError('user not found!')
                     setError('');
                     return;
                 }
-                if(error.message === 'Firebase: Error (auth/wrong-password).'){
+                if (error.message === 'Firebase: Error (auth/wrong-password).') {
                     setEmailError('')
                     setError('Your Password Wrong')
                     return
@@ -47,8 +48,10 @@ const Login = () => {
             })
     }
     return (
-
-        <div className="">
+        <>
+            <Helmet>
+                <title>Shippo-football-Academy | Login</title>
+            </Helmet>
             <form onSubmit={handleLogin} className=" rounded-md shadow-md w-2/3 md:w-1/3 mx-auto mt-10 border-2 px-8 py-16">
                 <h3 className="text-2xl text-center font-semibold mb-4">Please Login</h3>
                 <div className="relative z-0 w-full mb-6 group">
@@ -77,8 +80,7 @@ const Login = () => {
                 <SocialLogin></SocialLogin>
 
             </form>
-        </div>
-
+        </>
     );
 };
 
