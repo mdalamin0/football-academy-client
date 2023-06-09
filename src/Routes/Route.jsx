@@ -3,7 +3,8 @@ import Main from "../Layoutes/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
-import PopularClasses from "../Pages/Home/PopularClasses/PopularClasses";
+import Classes from "../Pages/Classes/Classes";
+import Dashboard from "../Layoutes/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'classes',
-                element: <PopularClasses></PopularClasses>
+                element: <Classes></Classes>,
+                loader: () => fetch('http://localhost:5000/allClasses')
+
             },
             {
                 path: 'login',
@@ -28,6 +31,10 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>
+    }
 ]);
 
 export default router;
