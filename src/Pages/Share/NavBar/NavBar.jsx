@@ -26,8 +26,8 @@ const NavBar = () => {
         <Navbar.Link>
           <ActiveLink to="/">Home</ActiveLink>
         </Navbar.Link>
-        <Navbar.Link href="#">
-          <p>Instructors</p>
+        <Navbar.Link>
+          <ActiveLink to="/instructors">Instructors</ActiveLink>
         </Navbar.Link>
         <Navbar.Link>
           <ActiveLink to="/classes">Classes</ActiveLink>
@@ -51,8 +51,8 @@ const NavBar = () => {
             />
           </>
         ) : (
-          <ActiveLink to="/signUp">
-            <button className="btn btn-primary">Sign Up</button>
+          <ActiveLink to="/login">
+            <button className="btn btn-primary">Login</button>
           </ActiveLink>
         )}
       </Navbar.Collapse>

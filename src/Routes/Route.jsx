@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Layoutes/Dashboard";
+import Instructors from "../Pages/Instructors/Instructors";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,12 @@ const router = createBrowserRouter([
                 path: 'classes',
                 element: <Classes></Classes>,
                 loader: () => fetch('http://localhost:5000/allClasses')
+
+            },
+            {
+                path: 'instructors',
+                element: <Instructors></Instructors>,
+                loader: () => fetch('http://localhost:5000/allInstructors')
 
             },
             {
