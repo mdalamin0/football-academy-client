@@ -1,6 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyClasses = () => {
   const { user } = useContext(AuthContext);
@@ -74,12 +75,12 @@ const MyClasses = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <a
-                    href="#"
+                  <Link
+                    to={`/dashboard/updateClasses/${c._id}`}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >
                     Edit Class
-                  </a>
+                  </Link>
                 </td>
               </tr>
             </tbody>

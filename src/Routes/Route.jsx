@@ -10,6 +10,7 @@ import Users from "../Pages/Dashboard/Users/Users";
 import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
+import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
             {
                 path: 'myClasses',
                 element: <MyClasses></MyClasses>
+            },
+            {
+                path: 'updateClasses/:id',
+                element: <UpdateClass></UpdateClass>,
+                loader: ({params}) => fetch(`http://localhost:5000/classesById/${params.id}`)
             }
         ]
     }
