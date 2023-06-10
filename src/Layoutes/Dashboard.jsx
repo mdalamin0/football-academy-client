@@ -4,8 +4,8 @@ import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  const isAdmin = false;
-  const isInstructor = true
+  const isAdmin = true;
+  const isInstructor = false
   // const [isAdmin] = useAdmin();
   // const [isInstructor] = useInstructor();
 

@@ -1,24 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const MyClasses = () => {
   const { user } = useContext(AuthContext);
+  const [classes, setClasses] = useState([]);
 
-  const {
-    data: classes = [],
-    refetch,
-    isLoading,
-  } = useQuery({
+  // const {
+  //   data: classes = [],
+  //   refetch,
+  //   isLoading,
+  // } = useQuery({
    
-    queryKey: ["classes"],
-    queryFn: async () => {
-      const response = await fetch(
-        `http://localhost:5000/classesByEmail/${user?.email}`
-      );
-      return response.json();
-    },
-  });
+  //   queryKey: ["classes"],
+  //   queryFn: async () => {
+  //     const response = await fetch(
+  //       `http://localhost:5000/classesByEmail/${user?.email}`
+  //     );
+  //     return response.json();
+  //   },
+  // });
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/classesByEmail/${user?.email}`)
+    .then(res => res.json())
+    .then(data => setClasses(data))
+  },[user])
 
   return (
     <div>
@@ -30,7 +37,7 @@ const MyClasses = () => {
                 Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Position
+              Total Enrolled Students
               </th>
               <th scope="col" className="px-6 py-3">
                 Status
@@ -59,11 +66,11 @@ const MyClasses = () => {
                     </div>
                   </div>
                 </th>
-                <td className="px-6 py-4">React Developer</td>
+                <td className="px-6 py-4">{c?.total_enrole}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                    Online
+                    
+                    {c?.status}
                   </div>
                 </td>
                 <td className="px-6 py-4">
@@ -71,7 +78,7 @@ const MyClasses = () => {
                     href="#"
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >
-                    Edit user
+                    Edit Class
                   </a>
                 </td>
               </tr>
