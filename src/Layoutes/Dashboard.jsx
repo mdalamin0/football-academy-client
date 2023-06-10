@@ -1,4 +1,3 @@
-import React from "react";
 import Drawer from "react-modern-drawer";
 import { FaHome } from "react-icons/fa";
 
@@ -7,29 +6,38 @@ import "react-modern-drawer/dist/index.css";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import React from "react";
 
 const Dashboard = () => {
-  const isAdmin = useAdmin();
-  const isInstructor = useInstructor();
+  // const {loading} = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  console.log(isAdmin, isInstructor)
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  // if(loading){
+  //   return <div>Loading...</div>
+  // }
+
+  const [isOpen, setIsOpen] = React.useState(true);
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
   return (
     <div className="mt-12 text-center">
       <>
-        <button
-          className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-md px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+       <div className="w-full text-right">
+       <button
+          className="text-white  bg-blue-700 hover:bg-blue-800  font-medium rounded-md px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700"
           onClick={toggleDrawer}
         >
           Show Menu
         </button>
+       </div>
         <Drawer
           open={isOpen}
           onClose={toggleDrawer}
           direction="left"
-          className="bla bla bla"
+          className="px-5"
         >
           {isAdmin ?
            <><div className="py-4 overflow-y-auto">
@@ -66,7 +74,7 @@ const Dashboard = () => {
                                clipRule="evenodd"
                              ></path>
                            </svg>
-                           <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
+                           <span className=" ml-3 whitespace-nowrap">Users</span>
                          </Link>
                        </li>
                      </ul>
@@ -107,7 +115,7 @@ const Dashboard = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Add Class</span>
+                <span className=" ml-3 whitespace-nowrap">Add Class</span>
               </Link>
             </li>
           </ul>
@@ -148,7 +156,7 @@ const Dashboard = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">student</span>
+                <span className=" ml-3 whitespace-nowrap">student</span>
               </Link>
             </li>
           </ul>
@@ -166,7 +174,7 @@ const Dashboard = () => {
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <FaHome></FaHome>
-              <span className="flex-1 ml-3 whitespace-nowrap">Home</span>
+              <span className=" ml-3 whitespace-nowrap">Home</span>
             </Link>
           </li>
         </ul>
