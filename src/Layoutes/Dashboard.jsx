@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-// import useAdmin from "../hooks/useAdmin";
-// import useInstructor from "../hooks/useInstructor";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
   const isAdmin = false;
