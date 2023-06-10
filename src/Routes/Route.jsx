@@ -8,6 +8,7 @@ import Dashboard from "../Layoutes/Dashboard";
 import Instructors from "../Pages/Instructors/Instructors";
 import Users from "../Pages/Dashboard/Users/Users";
 import AdminRoute from "./AdminRoute";
+import AddClass from "../Pages/AddClass/AddClass";
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: 'users',
                 element: <AdminRoute> <Users></Users></AdminRoute>
+            },
+            {
+                path: 'addClass',
+                element: <AddClass></AddClass>
             }
         ]
     }
