@@ -1,7 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
+  // const isAdmin = false;
+  const [isAdmin] = useAdmin();
   return (
     <div>
       {/* drawer init and show  */}
@@ -16,7 +19,7 @@ const Dashboard = () => {
           Show navigation
         </button>
       </div>
-<Outlet></Outlet>
+      <Outlet></Outlet>
       {/*  drawer component */}
       <div
         id="drawer-navigation"
@@ -51,14 +54,20 @@ const Dashboard = () => {
           </svg>
           <span className="sr-only">Close menu</span>
         </button>
-        <div className="py-4 overflow-y-auto">
+        {
+          isAdmin ? <><div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
             <li>
-              <Link to="/"
+              <Link
+                to="/"
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-               <img  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" src="https://pic.onlinewebfonts.com/svg/img_350696.png" alt="" />
+                <img
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  src="https://pic.onlinewebfonts.com/svg/img_350696.png"
+                  alt=""
+                />
                 <span className="ml-3">Manage Classes</span>
               </Link>
             </li>
@@ -85,22 +94,64 @@ const Dashboard = () => {
               </Link>
             </li>
           </ul>
+        </div></> : 
+        <>
+        <div className="py-4 overflow-y-auto">
+          <ul className="space-y-2 font-medium">
+            <li>
+              <Link
+                to="/"
+                href="#"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <img
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  src="https://pic.onlinewebfonts.com/svg/img_350696.png"
+                  alt=""
+                />
+                <span className="ml-3">My Classes</span>
+              </Link>
+            </li>
+            <li></li>
+            <li>
+              <Link
+                to="/dashboard/users"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="flex-1 ml-3 whitespace-nowrap">Classes</span>
+              </Link>
+            </li>
+          </ul>
         </div>
+        </> 
+        }
         <div className="inline-flex items-center justify-center w-full">
           <hr className="w-64 h-px my-8 bg-gray-400 border-0 dark:bg-gray-700" />
         </div>
         <ul className="space-y-2 font-medium">
-           
-            <li>
-              <Link
-                to="/"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <FaHome></FaHome>
-                <span className="flex-1 ml-3 whitespace-nowrap">Home</span>
-              </Link>
-            </li>
-          </ul>
+          <li>
+            <Link
+              to="/"
+              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <FaHome></FaHome>
+              <span className="flex-1 ml-3 whitespace-nowrap">Home</span>
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );

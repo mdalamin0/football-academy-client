@@ -7,6 +7,7 @@ import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Layoutes/Dashboard";
 import Instructors from "../Pages/Instructors/Instructors";
 import Users from "../Pages/Dashboard/Users/Users";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'users',
-                element: <Users></Users>
+                element: <AdminRoute> <Users></Users></AdminRoute>
             }
         ]
     }
