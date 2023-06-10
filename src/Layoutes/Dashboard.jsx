@@ -1,12 +1,13 @@
 import { Link, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-import useAdmin from "../hooks/useAdmin";
-import useInstructor from "../hooks/useInstructor";
+// import useAdmin from "../hooks/useAdmin";
+// import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  // const isAdmin = false;
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
+  const isAdmin = false;
+  const isInstructor = true
+  // const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructor();
 
   return (
     <div>
@@ -103,7 +104,7 @@ const Dashboard = () => {
           <ul className="space-y-2 font-medium">
             <li>
               <Link
-                to="/"
+                to="/dashboard/myClasses"
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >

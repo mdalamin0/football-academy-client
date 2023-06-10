@@ -7,8 +7,7 @@ const useInstructor = () => {
   const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
     queryKey: ["isInstructor", user?.email],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/users/admin/${user?.email}`
+      const res = await fetch(`http://localhost:5000/users/admin/${user?.email}`
       );
       return res.json();
     },
