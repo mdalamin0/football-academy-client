@@ -11,61 +11,70 @@ import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
         path: "/",
-        element: <Main></Main>,
-        children: [
-            {
-                path: '/',
-                element: <Home></Home>
-            },
-            {
-                path: 'classes',
-                element: <Classes></Classes>,
-                loader: () => fetch('http://localhost:5000/allClasses')
-
-            },
-            {
-                path: 'instructors',
-                element: <Instructors></Instructors>,
-                loader: () => fetch('http://localhost:5000/allInstructors')
-
-            },
-            {
-                path: 'login',
-                element: <Login></Login>
-            },
-            {
-                path: '/signUp',
-                element: <SignUp></SignUp>
-            }
-        ]
-    },
-    {
-        path: 'dashboard',
-        element: <Dashboard></Dashboard>,
-        children: [
-            {
-                path: 'users',
-                element: <AdminRoute> <Users></Users></AdminRoute>
-            },
-            {
-                path: 'addClass',
-                element: <AddClass></AddClass>
-            },
-            {
-                path: 'myClasses',
-                element: <MyClasses></MyClasses>
-            },
-            {
-                path: 'updateClasses/:id',
-                element: <UpdateClass></UpdateClass>,
-                loader: ({params}) => fetch(`http://localhost:5000/classesById/${params.id}`)
-            }
-        ]
-    }
+        element: <Home></Home>,
+      },
+      {
+        path: "classes",
+        element: <Classes></Classes>,
+        loader: () => fetch("http://localhost:5000/allClasses"),
+      },
+      {
+        path: "instructors",
+        element: <Instructors></Instructors>,
+        loader: () => fetch("http://localhost:5000/allInstructors"),
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "users",
+        element: (
+          <AdminRoute>
+            {" "}
+            <Users></Users>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "addClass",
+        element: <AddClass></AddClass>,
+      },
+      {
+        path: "myClasses",
+        element: <MyClasses></MyClasses>,
+      },
+      {
+        path: "updateClasses/:id",
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classesById/${params.id}`),
+      },
+      {
+        path: "manageClasses",
+        element: <ManageClasses></ManageClasses>,
+      },
+    ],
+  },
 ]);
 
 export default router;
