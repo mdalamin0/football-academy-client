@@ -1,29 +1,54 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 
 const Banner = () => {
     return (
-        <Carousel className="px-5 md:px-0">
-            <div>
-                <img src="https://www.chipukafootball.com/images/Youth-soccer-indiana.jpg" />
-            </div>
-            <div>
-                <img src="https://thumbs.dreamstime.com/b/kids-play-football-outdoor-field-children-score-goal-soccer-game-girl-boy-kicking-ball-running-child-team-jersey-120383202.jpg" />
-            </div>
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHIM9tq6LE-Gl1cHrYfzGzkK6UePhYa6Fz4XkRRvvGO5MACC7-EHXhY1trTksUQ6Bsy6M&usqp=CAU" />
-            </div>
-            <div>
-                <img src="https://media.istockphoto.com/id/827507456/photo/coach-instructing-junior-football-team-in-practice.jpg?s=612x612&w=is&k=20&c=cxG_NBwtkaP92X8SEAw2n7d7qip1do3yYQ0cGkNlxz4=" />
-            </div>
-            <div>
-                <img src="https://media.istockphoto.com/id/849258948/photo/junior-football-team-at-practice.jpg?s=612x612&w=is&k=20&c=6uZ9reVrQdZYyEbVGatMt3Ygu3wMwo9Pl5_-FBB2WPE=" />
-            </div>
-            <div>
-                <img src="https://media.istockphoto.com/id/1183994081/photo/young-footballers-practicing-running-drills-during-practice.jpg?s=1024x1024&w=is&k=20&c=VYaFRYNRb3ei2UBlEdATc6BomWvh2YaHOW_6bMjz-tE=" />
-            </div>
-        </Carousel>
+        
+<div id="default-carousel" className="bg-slate-600 relative w-full " data-carousel="slide">
+    {/* <!-- Carousel wrapper --> */}
+    <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+         {/* <!-- Item 1 --> */}
+        <div className=" duration-700 ease-in-out" data-carousel-item>
+            <img src="https://ibb.co/Z6Mm2cB" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+        </div>
+        {/* <!-- Item 2 --> */}
+        <div className=" duration-700 ease-in-out" data-carousel-item>
+            <img src="https://thumbs.dreamstime.com/b/kids-play-football-outdoor-field-children-score-goal-soccer-game-girl-boy-kicking-ball-running-child-team-jersey-120383202.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+        </div>
+        {/* <!-- I/tem 3 --> */}
+        <div className=" duration-700 ease-in-out" data-carousel-item>
+            <img src="https://media.istockphoto.com/id/1183994081/photo/young-footballers-practicing-running-drills-during-practice.jpg?s=1024x1024&w=is&k=20&c=VYaFRYNRb3ei2UBlEdATc6BomWvh2YaHOW_6bMjz-tE=" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+        </div>
+        {/* <!-- Item 4 --> */}
+        <div className=" duration-700 ease-in-out" data-carousel-item>
+            <img src="https://media.istockphoto.com/id/1183994081/photo/young-footballers-practicing-running-drills-during-practice.jpg?s=1024x1024&w=is&k=20&c=VYaFRYNRb3ei2UBlEdATc6BomWvh2YaHOW_6bMjz-tE=" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+        </div>
+    </div>
+    {/* <!-- Slider indicators --> */}
+    <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+        <button type="button" className="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" className="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    {/* <!-- Slider controls --> */}
+    <button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span className="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+            <span className="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
     );
 };
 
 export default Banner;
+
+
