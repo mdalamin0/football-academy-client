@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Classes = () => {
+  const {user} = useContext(AuthContext);
   const allClasses = useLoaderData();
   console.log(allClasses)
 
   const handleSelectClass = (singleClass) => {
-    console.log(singleClass)
-    const addClass = {
+    const selectClass = {
+      email: user?.email,
       class_name: singleClass.class_name,
       instructor_name: singleClass.instructor_name,
       price: singleClass.price,
@@ -20,7 +23,7 @@ const Classes = () => {
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(addClass)
+      body: JSON.stringify(selectClass)
     })
     .then(res => res.json())
     .then(data => {

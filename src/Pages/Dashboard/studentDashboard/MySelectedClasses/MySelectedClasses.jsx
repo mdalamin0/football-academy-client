@@ -1,12 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const MySelectedClasses = () => {
+  const {user} = useContext(AuthContext);
+
   const { data: allClasses = [], refetch } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5000/booking");
+      const response = await fetch(`http://localhost:5000/booking/${user?.email}`);
       return response.json();
     },
   });
