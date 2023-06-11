@@ -1,7 +1,40 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Classes = () => {
   const allClasses = useLoaderData();
+  console.log(allClasses)
+
+  const handleSelectClass = (singleClass) => {
+    console.log(singleClass)
+    const addClass = {
+      class_name: singleClass.class_name,
+      instructor_name: singleClass.instructor_name,
+      price: singleClass.price,
+      image: singleClass.image,
+      available_seats: singleClass.available_seats
+    };
+
+    fetch('http://localhost:5000/booking', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(addClass)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.insertedId){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Successfully Selected',
+          showConfirmButton: false,
+          timer: 1500
+      })
+      }
+    })
+  }
 
   return (
     <div className="mt-8">
@@ -17,7 +50,9 @@ const Classes = () => {
                                     <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Instructor: {c.instructor_name}</h5>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Available Seat: {c.available_seats}</p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Price: ${c.price}</p>
-                                <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 ">Select</button>
+                               
+                               <button onClick={() => handleSelectClass(c)} type="button" className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 ">Select</button>
+                             
                             </div>
                         </div>
 

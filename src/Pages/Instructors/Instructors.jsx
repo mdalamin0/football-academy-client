@@ -11,7 +11,7 @@ const Instructors = () => {
         {allInstructors.map((i) => (
           <div key={i._id}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <img className="rounded-t-lg w-full h-60" src={i.image} alt="" />
+              <img className="rounded-t-lg w-full h-60" src={i.photoUrl} alt="" />
               <div className="p-5">
                 <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   Instructor: {i.name}

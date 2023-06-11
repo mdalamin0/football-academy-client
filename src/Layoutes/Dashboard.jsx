@@ -10,9 +10,11 @@ import React from "react";
 
 const Dashboard = () => {
   // const {loading} = useContext(AuthContext);
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
-  console.log(isAdmin, isInstructor)
+  // const [isAdmin] = useAdmin();
+  // const [isInstructor] = useInstructor();
+  // console.log(isAdmin, isInstructor)
+  const isAdmin = false;
+  const isInstructor = false;
 
   // if(loading){
   //   return <div>Loading...</div>
@@ -126,7 +128,7 @@ const Dashboard = () => {
             <ul className="space-y-2 font-medium">
            <li>
               <Link
-                to="/manageClasses"
+                to="/dashboard/enrolledClasses"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <img
@@ -134,13 +136,13 @@ const Dashboard = () => {
                   src="https://pic.onlinewebfonts.com/svg/img_350696.png"
                   alt=""
                 />
-                <span className="ml-3">My Enrolle</span>
+                <span className="ml-3">My Enrolled Classes</span>
               </Link>
             </li>
             <li></li>
             <li>
               <Link
-                to="/dashboard/users"
+                to="/dashboard/selectedClasses"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -156,7 +158,7 @@ const Dashboard = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className=" ml-3 whitespace-nowrap">student</span>
+                <span className=" ml-3 whitespace-nowrap">My Selected Classes</span>
               </Link>
             </li>
           </ul>
