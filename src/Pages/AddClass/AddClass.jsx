@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 const AddClass = () => {
-  const {user} = useContext(AuthContext);
+  const {user} = useAuth();
   const {
     register,
     reset,

@@ -1,17 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useAuth from "../../../../hooks/useAuth";
 
 const MySelectedClasses = () => {
-  const {user} = useContext(AuthContext);
+  const {user} = useAuth();
+  const [axiosSecure] = useAxiosSecure();
 
+  // const { data: allClasses = [], refetch } = useQuery({
+  //   queryKey: ["booking"],
+  //   queryFn: async () => {
+  //     const response = await fetch(`http://localhost:5000/booking/${user?.email}`, {
+  //       headers: {
+  //         authorization: `bearer ${token}`
+  //       }
+  //     });
+  //     return response.json();
+  //   },
+  // });
   const { data: allClasses = [], refetch } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/booking/${user?.email}`);
-      return response.json();
+      const response = await axiosSecure(`/booking/${user?.email}`);
+      return response.data;
     },
   });
 

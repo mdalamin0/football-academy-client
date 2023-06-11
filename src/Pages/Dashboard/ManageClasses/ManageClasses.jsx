@@ -9,19 +9,6 @@ const ManageClasses = () => {
     .then(data => setClasses(data))
   },[])
 
-  // const {
-  //   data: classes = [],
-  //   refetch,
-  //   isLoading,
-  // } = useQuery({
-  //   queryKey: ["classes"],
-  //   queryFn: async () => {
-  //     const response = await fetch(`http://localhost:5000/allClasses`);
-  //     return response.json();
-  //   },
-  // });
-
-  
 
   const handleUpdateStatus = (id, newStatus) => {
     // Make an API call to update the status
