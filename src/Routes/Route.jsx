@@ -7,13 +7,13 @@ import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Layoutes/Dashboard";
 import Instructors from "../Pages/Instructors/Instructors";
 import Users from "../Pages/Dashboard/Users/Users";
-import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import UpdateClass from "../Pages/Dashboard/UpdateClass/UpdateClass";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import MyEnrolledClasses from "../Pages/Dashboard/studentDashboard/MyEnrolledClasses/MyEnrolledClasses";
 import MySelectedClasses from "../Pages/Dashboard/studentDashboard/MySelectedClasses/MySelectedClasses";
+import Payment from "../Pages/Dashboard/studentDashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -50,12 +50,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "users",
-        element: (
-          <AdminRoute>
-            {" "}
-            <Users></Users>
-          </AdminRoute>
-        ),
+        element: <Users></Users>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
       {
         path: "addClass",
@@ -76,13 +75,13 @@ const router = createBrowserRouter([
         element: <ManageClasses></ManageClasses>,
       },
       {
-        path: 'enrolledClasses',
-        element: <MyEnrolledClasses></MyEnrolledClasses>
+        path: "enrolledClasses",
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
       },
       {
-        path: 'selectedClasses',
-        element: <MySelectedClasses></MySelectedClasses>
-      }
+        path: "selectedClasses",
+        element: <MySelectedClasses></MySelectedClasses>,
+      },
     ],
   },
 ]);

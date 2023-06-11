@@ -10,11 +10,11 @@ import React from "react";
 
 const Dashboard = () => {
   // const {loading} = useContext(AuthContext);
-  // const [isAdmin] = useAdmin();
-  // const [isInstructor] = useInstructor();
-  // console.log(isAdmin, isInstructor)
-  const isAdmin = false;
-  const isInstructor = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+  console.log(isAdmin, isInstructor)
+  // const isAdmin = false;
+  // const isInstructor = false;
 
   // if(loading){
   //   return <div>Loading...</div>
