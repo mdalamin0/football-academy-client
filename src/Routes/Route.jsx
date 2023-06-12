@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: "classes",
         element: <Classes></Classes>,
-        loader: () => fetch("http://localhost:5000/allClasses"),
+        loader: () => fetch("http://localhost:5000/allClasses")
       },
       {
         path: "instructors",
@@ -52,11 +52,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "users",
-        element: <AdminRoute></AdminRoute>,
+        element: <AdminRoute><Users></Users></AdminRoute>,
       },
       {
-        path: "payment",
+        path: "payment/:id",
         element: <Payment></Payment>,
+        loader: ({params}) => fetch(`http://localhost:5000/payments/${params.id}`)
       },
       {
         path: "addClass",
