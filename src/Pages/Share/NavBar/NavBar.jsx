@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import ActiveLink from "../../../Components/ActiveLink/ActiveLink";
 import { Link } from "react-router-dom";
+import logo from '../../../../public/shippo-logo.png'
 
 const NavBar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const NavBar = () => {
         <img
           alt="Flowbite React Logo"
           className=" h-10 md:h-12 "
-          src="http://shippo.imoodev.com/wp-content/uploads/2023/05/shippo-logo.png"
+          src={logo}
         />
       </Navbar.Brand>
       <Navbar.Toggle />
