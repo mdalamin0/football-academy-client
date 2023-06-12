@@ -16,11 +16,13 @@ import MySelectedClasses from "../Pages/Dashboard/studentDashboard/MySelectedCla
 import Payment from "../Pages/Dashboard/studentDashboard/Payment/Payment";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../Pages/Error/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
