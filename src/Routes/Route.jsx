@@ -29,12 +29,18 @@ const router = createBrowserRouter([
       {
         path: "classes",
         element: <Classes></Classes>,
-        loader: () => fetch("http://localhost:5000/allClasses")
+        loader: () =>
+          fetch(
+            "https://shippo-football-academy-server-mdalamin0.vercel.app/allClasses"
+          ),
       },
       {
         path: "instructors",
         element: <Instructors></Instructors>,
-        loader: () => fetch("http://localhost:5000/allInstructors"),
+        loader: () =>
+          fetch(
+            "https://shippo-football-academy-server-mdalamin0.vercel.app/allInstructors"
+          ),
       },
       {
         path: "login",
@@ -48,16 +54,27 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "users",
-        element: <AdminRoute><Users></Users></AdminRoute>,
+        element: (
+          <AdminRoute>
+            <Users></Users>
+          </AdminRoute>
+        ),
       },
       {
         path: "payment/:id",
         element: <Payment></Payment>,
-        loader: ({params}) => fetch(`http://localhost:5000/payments/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://shippo-football-academy-server-mdalamin0.vercel.app/payments/${params.id}`
+          ),
       },
       {
         path: "addClass",
@@ -71,7 +88,9 @@ const router = createBrowserRouter([
         path: "updateClasses/:id",
         element: <UpdateClass></UpdateClass>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/classesById/${params.id}`),
+          fetch(
+            `https://shippo-football-academy-server-mdalamin0.vercel.app/classesById/${params.id}`
+          ),
       },
       {
         path: "manageClasses",

@@ -4,23 +4,26 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Users = () => {
   const [axiosSecure] = useAxiosSecure();
-  const {data: users = [], refetch } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
-    queryFn: async() => {
-        const response = await axiosSecure.get('/users')
-        return response.data;
+    queryFn: async () => {
+      const response = await axiosSecure.get("/users");
+      return response.data;
     },
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/users/admin/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-            refetch();
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -32,14 +35,17 @@ const Users = () => {
       });
   };
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/users/instructor/${user._id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.modifiedCount) {
-            refetch();
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -85,21 +91,28 @@ const Users = () => {
                   </th>
                   <td className="px-6 py-4">{user.email}</td>
                   {user.role === "instructor" ? (
-                      <td className="px-6 py-4">
-                      <span className="font-medium text-green-600 dark:text-blue-500">Already Instructor</span>
-                  </td>
+                    <td className="px-6 py-4">
+                      <span className="font-medium text-green-600 dark:text-blue-500">
+                        Already Instructor
+                      </span>
+                    </td>
                   ) : (
                     <td className="px-6 py-4">
-                      <button onClick={() => handleMakeInstructor(user)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                      <button
+                        onClick={() => handleMakeInstructor(user)}
+                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
                         Make Instructor
                       </button>
                     </td>
                   )}
 
                   {user.role === "admin" ? (
-                <td className="px-6 py-4">
-                    <span className="font-medium text-green-600 dark:text-blue-500">Already Admin</span>
-                </td>
+                    <td className="px-6 py-4">
+                      <span className="font-medium text-green-600 dark:text-blue-500">
+                        Already Admin
+                      </span>
+                    </td>
                   ) : (
                     <td className="px-6 py-4">
                       <button

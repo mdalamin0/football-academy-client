@@ -5,13 +5,13 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 
 const MySelectedClasses = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
 
   // const { data: allClasses = [], refetch } = useQuery({
   //   queryKey: ["booking"],
   //   queryFn: async () => {
-  //     const response = await fetch(`http://localhost:5000/booking/${user?.email}`, {
+  //     const response = await fetch(`https://shippo-football-academy-server-mdalamin0.vercel.app/booking/${user?.email}`, {
   //       headers: {
   //         authorization: `bearer ${token}`
   //       }
@@ -28,9 +28,12 @@ const MySelectedClasses = () => {
   });
 
   const handleDeleteClass = (id) => {
-    fetch(`http://localhost:5000/bookingById/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/bookingById/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

@@ -32,30 +32,36 @@ const SignUp = () => {
         navigate(from, { replace: true });
         profileUpdate(createdUser, data.name, data.photoUrl)
           .then(() => {
-            const savaUser = { name: data.name, email: data.email,
-                 photoUrl: data.photoUrl };
-            fetch("http://localhost:5000/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(savaUser),
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.insertedId){
-                    // reset();
-                    console.log(data)
-                    
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Successfully Sign Up',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+            const savaUser = {
+              name: data.name,
+              email: data.email,
+              photoUrl: data.photoUrl,
+            };
+            fetch(
+              "https://shippo-football-academy-server-mdalamin0.vercel.app/users",
+              {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(savaUser),
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  // reset();
+                  console.log(data);
+
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully Sign Up",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
                 }
-            })
+              });
           })
           .catch((error) => {
             console.log(error);

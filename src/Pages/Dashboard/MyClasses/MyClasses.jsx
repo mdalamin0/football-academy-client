@@ -12,21 +12,23 @@ const MyClasses = () => {
   //   refetch,
   //   isLoading,
   // } = useQuery({
-   
+
   //   queryKey: ["classes"],
   //   queryFn: async () => {
   //     const response = await fetch(
-  //       `http://localhost:5000/classesByEmail/${user?.email}`
+  //       `https://shippo-football-academy-server-mdalamin0.vercel.app/classesByEmail/${user?.email}`
   //     );
   //     return response.json();
   //   },
   // });
 
   useEffect(() => {
-    fetch(`http://localhost:5000/classesByEmail/${user?.email}`)
-    .then(res => res.json())
-    .then(data => setClasses(data))
-  },[user])
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/classesByEmail/${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setClasses(data));
+  }, [user]);
 
   return (
     <div>
@@ -38,7 +40,7 @@ const MyClasses = () => {
                 Name
               </th>
               <th scope="col" className="px-6 py-3">
-              Total Enrolled Students
+                Total Enrolled Students
               </th>
               <th scope="col" className="px-6 py-3">
                 Status
@@ -69,10 +71,7 @@ const MyClasses = () => {
                 </th>
                 <td className="px-6 py-4">{c?.total_enrole}</td>
                 <td className="px-6 py-4">
-                  <div className="flex items-center">
-                    
-                    {c?.status}
-                  </div>
+                  <div className="flex items-center">{c?.status}</div>
                 </td>
                 <td className="px-6 py-4">
                   <Link

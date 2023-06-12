@@ -5,7 +5,9 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
+    fetch(
+      "https://shippo-football-academy-server-mdalamin0.vercel.app/instructors"
+    )
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);
@@ -31,7 +33,7 @@ const PopularInstructors = () => {
               <img className="rounded-t-lg w-full h-60" src={i.image} alt="" />
               <div className="p-5">
                 <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                   Name: {i.name}
+                  Name: {i.name}
                 </h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Available Seat: {i.available_seat}

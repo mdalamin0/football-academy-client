@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
 const AddClass = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const {
     register,
     reset,
@@ -18,34 +18,39 @@ const AddClass = () => {
       instructorEmail: data.email,
       available_seats: data.seat,
       image: data.image,
-      price: data.price
-    }
+      price: data.price,
+    };
 
-    fetch('http://localhost:5000/addClass', {
-      method: 'POST',
-      headers: {
-        'content-type' : 'application/json'
-      },
-      body: JSON.stringify(newClass)
-
-    })
-    .then(res => res.json())
-    .then(data => {
-    reset()
-      if(data.insertedId){
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Successfully Added',
-          showConfirmButton: false,
-          timer: 1500
-      })
+    fetch(
+      "https://shippo-football-academy-server-mdalamin0.vercel.app/addClass",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newClass),
       }
-    })
-  }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        reset();
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Successfully Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="md:border-2 p-8 md:w-1/2 shadow-lg rounded-md mx-auto">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="md:border-2 p-8 md:w-1/2 shadow-lg rounded-md mx-auto"
+    >
       <h2 className="text-3xl font-semibold text-center pb-8 text-slate-800">
         Add a Class--
       </h2>
@@ -59,7 +64,7 @@ const AddClass = () => {
             placeholder=" "
             {...register("className", { required: true })}
           />
-           {errors.name && (
+          {errors.name && (
             <span className="text-red-600">
               <small>Class Name is required</small>
             </span>
@@ -119,7 +124,7 @@ const AddClass = () => {
             placeholder=" "
             {...register("seat", { required: true })}
           />
-           {errors.seat && (
+          {errors.seat && (
             <span className="text-red-600">
               <small>Seat is required</small>
             </span>

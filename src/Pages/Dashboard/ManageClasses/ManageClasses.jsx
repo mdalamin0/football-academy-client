@@ -4,21 +4,25 @@ const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/allClasses')
-    .then(res => res.json())
-    .then(data => setClasses(data))
-  },[])
-
+    fetch(
+      "https://shippo-football-academy-server-mdalamin0.vercel.app/allClasses"
+    )
+      .then((res) => res.json())
+      .then((data) => setClasses(data));
+  }, []);
 
   const handleUpdateStatus = (id, newStatus) => {
     // Make an API call to update the status
-    fetch(`http://localhost:5000/classes/updateStatus/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ status: newStatus }),
-    })
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/classes/updateStatus/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: newStatus }),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           // Update the status of the selected item locally
@@ -29,25 +33,28 @@ const ManageClasses = () => {
             return item;
           });
           setClasses(updatedData);
-          alert('Status updated successfully.');
+          alert("Status updated successfully.");
         } else {
-          alert('Failed to update the status.');
+          alert("Failed to update the status.");
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
-        alert('Failed to update the status.');
+        console.error("Error:", error);
+        alert("Failed to update the status.");
       });
   };
   const handleUpdateStatusTwo = (id, newStatus) => {
     // Make an API call to update the status
-    fetch(`http://localhost:5000/classes/updateStatus/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ status: newStatus }),
-    })
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/classes/updateStatus/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: newStatus }),
+      }
+    )
       .then((response) => {
         if (response.ok) {
           // Update the status of the selected item locally
@@ -58,14 +65,14 @@ const ManageClasses = () => {
             return item;
           });
           setClasses(updatedData);
-          alert('Status updated successfully.');
+          alert("Status updated successfully.");
         } else {
-          alert('Failed to update the status.');
+          alert("Failed to update the status.");
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
-        alert('Failed to update the status.');
+        console.error("Error:", error);
+        alert("Failed to update the status.");
       });
   };
   return (
@@ -84,7 +91,7 @@ const ManageClasses = () => {
                 Instructor Email
               </th>
               <th scope="col" className="px-6 py-3">
-               Enrolled Students
+                Enrolled Students
               </th>
               <th scope="col" className="px-6 py-3">
                 Status
@@ -107,35 +114,58 @@ const ManageClasses = () => {
                     alt="Jese image"
                   />
                   <div className="pl-3">
-                    <div className="text-base font-semibold">{c.class_name}</div>
+                    <div className="text-base font-semibold">
+                      {c.class_name}
+                    </div>
                     <div className="font-normal text-gray-500">
-                    Available seats: {c.available_seats}
+                      Available seats: {c.available_seats}
                     </div>
                   </div>
                 </th>
+                <td className="px-6 py-4">{c.instructor_name}</td>
                 <td className="px-6 py-4">
-                  {c.instructor_name}
-                </td>
-                <td className="px-6 py-4">
-                  {c.instructorEmail ?
-                  <><span>{c.instructorEmail}</span></> :
-                  <>Not Available</>
-                  }
+                  {c.instructorEmail ? (
+                    <>
+                      <span>{c.instructorEmail}</span>
+                    </>
+                  ) : (
+                    <>Not Available</>
+                  )}
                 </td>
                 <td className="px-6 py-4">{c?.total_enrole}</td>
                 <td className="px-6 py-4">
-                  <button onClick={() => handleUpdateStatus(c._id)}  className="font-medium text-blue-600 dark:text-blue-500 ">
-                  <div className="flex items-center">{c?.status === 'pending' ? <><span className="text-green-500">Approve?</span></> : 'Approved !'
-                  }</div>
+                  <button
+                    onClick={() => handleUpdateStatus(c._id)}
+                    className="font-medium text-blue-600 dark:text-blue-500 "
+                  >
+                    <div className="flex items-center">
+                      {c?.status === "pending" ? (
+                        <>
+                          <span className="text-green-500">Approve?</span>
+                        </>
+                      ) : (
+                        "Approved !"
+                      )}
+                    </div>
                   </button>
                 </td>
                 <td className="px-6 py-4">
-                      <>
-                        <button onClick={() => handleUpdateStatusTwo(c._id)}  className="font-medium text-red-600">
-                  <div className="flex items-center">{c?.status === 'pending' ? <><span className="text-purple-500">Deny?</span></> : 'denied'
-                  }</div>
-                  </button>
-                      </>
+                  <>
+                    <button
+                      onClick={() => handleUpdateStatusTwo(c._id)}
+                      className="font-medium text-red-600"
+                    >
+                      <div className="flex items-center">
+                        {c?.status === "pending" ? (
+                          <>
+                            <span className="text-purple-500">Deny?</span>
+                          </>
+                        ) : (
+                          "denied"
+                        )}
+                      </div>
+                    </button>
+                  </>
                 </td>
               </tr>
             </tbody>
