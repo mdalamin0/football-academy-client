@@ -1,8 +1,9 @@
 import Drawer from "react-modern-drawer";
 import { FaHistory, FaHome } from "react-icons/fa";
 import { BiSelectMultiple } from "react-icons/bi";
+import { SiGoogleclassroom } from "react-icons/si";
 
-//import styles 👇
+//import styles 
 import "react-modern-drawer/dist/index.css";
 import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
@@ -45,11 +46,7 @@ const Dashboard = () => {
                       to="/dashboard/manageClasses"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      <img
-                        className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        src="https://pic.onlinewebfonts.com/svg/img_350696.png"
-                        alt=""
-                      />
+                      <SiGoogleclassroom></SiGoogleclassroom>
                       <span className="ml-3">Manage Classes</span>
                     </Link>
                   </li>
@@ -89,11 +86,7 @@ const Dashboard = () => {
                       to="/dashboard/myClasses"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      <img
-                        className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        src="https://pic.onlinewebfonts.com/svg/img_350696.png"
-                        alt=""
-                      />
+                      <SiGoogleclassroom></SiGoogleclassroom>
                       <span className="ml-3">My Classes</span>
                     </Link>
                   </li>
@@ -133,11 +126,7 @@ const Dashboard = () => {
                       to="/dashboard/enrolledClasses"
                       className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      <img
-                        className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        src="https://pic.onlinewebfonts.com/svg/img_350696.png"
-                        alt=""
-                      />
+                      <SiGoogleclassroom></SiGoogleclassroom>
                       <span className="ml-3">My Enrolled Classes</span>
                     </Link>
                   </li>

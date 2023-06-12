@@ -96,7 +96,7 @@ const router = createBrowserRouter([
       },
       {
         path: "manageClasses",
-        element: <ManageClasses></ManageClasses>,
+        element: <AdminRoute> <ManageClasses></ManageClasses></AdminRoute>,
       },
       {
         path: "enrolledClasses",
