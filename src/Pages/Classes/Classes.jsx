@@ -5,7 +5,6 @@ import useAuth from "../../hooks/useAuth";
 const Classes = () => {
   const { user } = useAuth();
   const allClasses = useLoaderData();
-  console.log(allClasses);
 
   const handleSelectClass = (singleClass) => {
     const selectClass = {
