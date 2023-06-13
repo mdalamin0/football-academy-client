@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 const Instructors = () => {
   const allInstructors = useLoaderData();
   return (
     <div className="mt-8">
+       <Helmet>
+                <title>Shippo-football-Academy | instructor</title>
+            </Helmet>
       <h3 className="text-3xl text-center font-bold">
         Our Available Instructor: {allInstructors.length}
       </h3>

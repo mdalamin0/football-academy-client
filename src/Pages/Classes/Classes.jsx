@@ -3,8 +3,12 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
 const Classes = () => {
-  const { user } = useAuth();
+  const { user, loading} = useAuth();
   const allClasses = useLoaderData();
+
+  if(loading){
+    return <div>Loading....</div>
+  }
 
   const handleSelectClass = (singleClass) => {
     const selectClass = {

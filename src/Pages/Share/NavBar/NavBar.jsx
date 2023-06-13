@@ -33,6 +33,9 @@ const NavBar = () => {
         <Navbar.Link>
           <ActiveLink to="/classes">Classes</ActiveLink>
         </Navbar.Link>
+        <Navbar.Link>
+          <ActiveLink to="/signUp">Sign Up</ActiveLink>
+        </Navbar.Link>
         {user && (
           <Navbar.Link>
             <Link to="/dashboard">Dashboard</Link>
