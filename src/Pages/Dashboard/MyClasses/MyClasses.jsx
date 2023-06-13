@@ -16,14 +16,16 @@ const MyClasses = () => {
   //   queryKey: ["classes"],
   //   queryFn: async () => {
   //     const response = await fetch(
-  //       `http://localhost:5000/classesByEmail/${user?.email}`
+  //       `https://shippo-football-academy-server-mdalamin0.vercel.app/classesByEmail/${user?.email}`
   //     );
   //     return response.json();
   //   },
   // });
 
   useEffect(() => {
-    fetch(`http://localhost:5000/classesByEmail/${user?.email}`)
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/classesByEmail/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, [user]);

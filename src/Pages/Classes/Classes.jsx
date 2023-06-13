@@ -6,11 +6,12 @@ const Classes = () => {
   const { user, loading } = useAuth();
   const allClasses = useLoaderData();
 
-  if (loading) {
-    return <div>Loading....</div>;
-  }
+ 
 
   const handleSelectClass = (singleClass) => {
+    if (loading) {
+      return <div>Loading....</div>;
+    }
     const selectClass = {
       email: user?.email,
       class_name: singleClass.class_name,
@@ -20,13 +21,16 @@ const Classes = () => {
       available_seats: singleClass.available_seats,
     };
 
-    fetch("http://localhost:5000/booking", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(selectClass),
-    })
+    fetch(
+      "https://shippo-football-academy-server-mdalamin0.vercel.app/booking",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(selectClass),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

@@ -23,13 +23,16 @@ const UpdateClass = () => {
       price,
     };
 
-    fetch(`http://localhost:5000/classesById/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateClass),
-    })
+    fetch(
+      `https://shippo-football-academy-server-mdalamin0.vercel.app/classesById/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateClass),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

@@ -5,7 +5,9 @@ const PopularInstructors = () => {
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/instructors")
+    fetch(
+      "https://shippo-football-academy-server-mdalamin0.vercel.app/instructors"
+    )
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);
