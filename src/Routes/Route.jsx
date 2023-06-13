@@ -32,18 +32,12 @@ const router = createBrowserRouter([
       {
         path: "classes",
         element: <Classes></Classes>,
-        loader: () =>
-          fetch(
-            "https://shippo-football-academy-server-mdalamin0.vercel.app/allClasses"
-          ),
+        loader: () => fetch("http://localhost:5000/allClasses"),
       },
       {
         path: "instructors",
         element: <Instructors></Instructors>,
-        loader: () =>
-          fetch(
-            "https://shippo-football-academy-server-mdalamin0.vercel.app/allInstructors"
-          ),
+        loader: () => fetch("http://localhost:5000/allInstructors"),
       },
       {
         path: "login",
@@ -75,9 +69,7 @@ const router = createBrowserRouter([
         path: "payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(
-            `https://shippo-football-academy-server-mdalamin0.vercel.app/payments/${params.id}`
-          ),
+          fetch(`http://localhost:5000/payments/${params.id}`),
       },
       {
         path: "addClass",
@@ -91,13 +83,16 @@ const router = createBrowserRouter([
         path: "updateClasses/:id",
         element: <UpdateClass></UpdateClass>,
         loader: ({ params }) =>
-          fetch(
-            `https://shippo-football-academy-server-mdalamin0.vercel.app/classesById/${params.id}`
-          ),
+          fetch(`http://localhost:5000/classesById/${params.id}`),
       },
       {
         path: "manageClasses",
-        element: <AdminRoute> <ManageClasses></ManageClasses></AdminRoute>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <ManageClasses></ManageClasses>
+          </AdminRoute>
+        ),
       },
       {
         path: "enrolledClasses",
@@ -108,9 +103,9 @@ const router = createBrowserRouter([
         element: <MySelectedClasses></MySelectedClasses>,
       },
       {
-        path: 'paymentHistory',
-        element: <PaymentHistory></PaymentHistory>
-      }
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
     ],
   },
 ]);

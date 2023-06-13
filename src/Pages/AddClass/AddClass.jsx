@@ -21,16 +21,13 @@ const AddClass = () => {
       price: data.price,
     };
 
-    fetch(
-      "https://shippo-football-academy-server-mdalamin0.vercel.app/addClass",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newClass),
-      }
-    )
+    fetch("http://localhost:5000/addClass", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newClass),
+    })
       .then((res) => res.json())
       .then((data) => {
         reset();

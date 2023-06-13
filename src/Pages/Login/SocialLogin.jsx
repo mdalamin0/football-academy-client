@@ -18,16 +18,13 @@ const SocialLogin = () => {
           email: loggedUser.email,
           photoUrl: loggedUser.photoURL,
         };
-        fetch(
-          "https://shippo-football-academy-server-mdalamin0.vercel.app/users",
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(savaUser),
-          }
-        )
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savaUser),
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {

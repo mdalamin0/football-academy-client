@@ -9,7 +9,7 @@ const useInstructor = () => {
     queryKey: ["isInstructor", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://shippo-football-academy-server-mdalamin0.vercel.app/users/instructor/${user?.email}`,
+        `http://localhost:5000/users/instructor/${user?.email}`,
         {
           headers: {
             authorization: `bearer ${token}`,

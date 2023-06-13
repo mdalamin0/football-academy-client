@@ -81,8 +81,8 @@ console.log(paymentIntent)
       }
       axiosSecure.post('/payments', payment)
       .then(res => {
-        console.log(res)
-        if(res.data.insertedId){
+        console.log(res.data.insertResult.insertedId)
+        if(res.data.insertResult.insertedId){
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -91,6 +91,7 @@ console.log(paymentIntent)
             timer: 1500,
           })
         }
+        card.clear()
       })
     }
   };

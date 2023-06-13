@@ -3,11 +3,11 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
 const Classes = () => {
-  const { user, loading} = useAuth();
+  const { user, loading } = useAuth();
   const allClasses = useLoaderData();
 
-  if(loading){
-    return <div>Loading....</div>
+  if (loading) {
+    return <div>Loading....</div>;
   }
 
   const handleSelectClass = (singleClass) => {
@@ -20,16 +20,13 @@ const Classes = () => {
       available_seats: singleClass.available_seats,
     };
 
-    fetch(
-      "https://shippo-football-academy-server-mdalamin0.vercel.app/booking",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(selectClass),
-      }
-    )
+    fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(selectClass),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

@@ -4,25 +4,20 @@ const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://shippo-football-academy-server-mdalamin0.vercel.app/allClasses"
-    )
+    fetch("http://localhost:5000/allClasses")
       .then((res) => res.json())
       .then((data) => setClasses(data));
   }, []);
 
   const handleUpdateStatus = (id, newStatus) => {
     // Make an API call to update the status
-    fetch(
-      `https://shippo-football-academy-server-mdalamin0.vercel.app/classes/updateStatus/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: newStatus }),
-      }
-    )
+    fetch(`http://localhost:5000/classes/updateStatus/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: newStatus }),
+    })
       .then((response) => {
         if (response.ok) {
           // Update the status of the selected item locally
@@ -45,16 +40,13 @@ const ManageClasses = () => {
   };
   const handleUpdateStatusTwo = (id, newStatus) => {
     // Make an API call to update the status
-    fetch(
-      `https://shippo-football-academy-server-mdalamin0.vercel.app/classes/updateStatus/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: newStatus }),
-      }
-    )
+    fetch(`http://localhost:5000/classes/updateStatus/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: newStatus }),
+    })
       .then((response) => {
         if (response.ok) {
           // Update the status of the selected item locally
