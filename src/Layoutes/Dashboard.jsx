@@ -2,6 +2,7 @@ import Drawer from "react-modern-drawer";
 import { FaHistory, FaHome } from "react-icons/fa";
 import { BiSelectMultiple } from "react-icons/bi";
 import { SiGoogleclassroom } from "react-icons/si";
+import { GiTeacher } from "react-icons/gi";
 
 //import styles 
 import "react-modern-drawer/dist/index.css";
@@ -170,6 +171,24 @@ const Dashboard = () => {
                 >
                   <FaHome></FaHome>
                   <span className=" ml-3 whitespace-nowrap">Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/classes"
+                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                <SiGoogleclassroom></SiGoogleclassroom>
+                  <span className=" ml-3 whitespace-nowrap">Classes</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/instructors"
+                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <GiTeacher></GiTeacher>
+                  <span className=" ml-3 whitespace-nowrap">Instructors</span>
                 </Link>
               </li>
             </ul>

@@ -8,7 +8,6 @@ const Payment = () => {
   const singleClass = useLoaderData();
   const {price} = singleClass;
   const priceNumber = parseFloat(price)
-  console.log(priceNumber)
   
   return (
     <div className="p-8 md:w-2/3 lg:w-1/2 mx-auto mt-12 border-2 shadow-md rounded-md">

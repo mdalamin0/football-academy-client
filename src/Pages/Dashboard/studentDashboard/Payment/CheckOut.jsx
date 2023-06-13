@@ -5,7 +5,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const CheckOut = ({ price, singleClass }) => {
-  const {_id, class_name} = singleClass;
+  const {_id, class_name, image} = singleClass;
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -36,7 +36,7 @@ const CheckOut = ({ price, singleClass }) => {
       return;
     }
 
-    // setProcessing(true);
+    setProcessing(true);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -65,7 +65,7 @@ const CheckOut = ({ price, singleClass }) => {
       console.log(confirmError);
     }
 console.log(paymentIntent)
-    // setProcessing(false);
+    setProcessing(false);
 
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
@@ -74,12 +74,14 @@ console.log(paymentIntent)
         email: user?.email,
         transactionId: paymentIntent.id,
         price,
+        date: new Date(),
         classId: _id,
-        class_name: class_name
+        class_name: class_name,
+        image: image
       }
       axiosSecure.post('/payments', payment)
       .then(res => {
-        console.log(res.data)
+        console.log(res)
         if(res.data.insertedId){
           Swal.fire({
             position: "top-end",
@@ -97,6 +99,7 @@ console.log(paymentIntent)
     <>
       <form onSubmit={handleSubmit}>
         <CardElement
+         className="border-2 py-2 px-4 rounded-md"
           options={{
             style: {
               base: {
@@ -116,7 +119,7 @@ console.log(paymentIntent)
           <button
             className="bg-blue-600 hover:bg-blue-700 px-6 font-bold py-2 rounded-md text-white"
             type="submit"
-            disabled={!stripe || !clientSecret }
+            disabled={!stripe || !clientSecret || processing }
           >
             Pay
           </button>
