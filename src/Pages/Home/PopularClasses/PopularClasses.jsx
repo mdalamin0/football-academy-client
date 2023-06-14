@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
+import Aos from 'aos';
+import 'aos/dist/aos.css'
+
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
+
+  Aos.init({
+    duration: 1200,
+  })
 
   useEffect(() => {
     fetch("https://shippo-football-academy-server-mdalamin0.vercel.app/classes")
@@ -25,7 +32,7 @@ const PopularClasses = () => {
       </div>
       <div className="p-4 md:p-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {classes.map((c) => (
-          <div key={c._id}>
+          <div data-aos="zoom-out" key={c._id}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <img className="rounded-t-lg w-full h-60" src={c.image} alt="" />
               <div className="p-5">
