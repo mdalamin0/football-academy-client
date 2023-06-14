@@ -29,7 +29,7 @@ const Banner = () => {
           <img className="h-[400px] md:h-[600px]" src="https://media.istockphoto.com/id/1183994081/photo/young-footballers-practicing-running-drills-during-practice.jpg?s=1024x1024&w=is&k=20&c=VYaFRYNRb3ei2UBlEdATc6BomWvh2YaHOW_6bMjz-tE=" />
         </SwiperSlide>
         <SwiperSlide>
-          <img className="h-[400px] md:h-[600px]" src="https://thumbs.dreamstime.com/b/kids-play-football-outdoor-field-children-score-goal-soccer-game-girl-boy-kicking-ball-running-child-team-jersey-120383202.jpg" />
+          <img className="h-[400px] md:h-[600px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZKszlDoGaNv9VOueLDZykjMuCCIqx2_o5gw&usqp=CAU" />
         </SwiperSlide>
         <SwiperSlide>
           <img className="h-[400px] md:h-[600px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtrHTe-PeMRluhKF-Z8s7mDgHbWLJJiQv_7A&usqp=CAU" />
