@@ -8,17 +8,7 @@ const MySelectedClasses = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
 
-  // const { data: allClasses = [], refetch } = useQuery({
-  //   queryKey: ["booking"],
-  //   queryFn: async () => {
-  //     const response = await fetch(`https://shippo-football-academy-server-mdalamin0.vercel.app/booking/${user?.email}`, {
-  //       headers: {
-  //         authorization: `bearer ${token}`
-  //       }
-  //     });
-  //     return response.json();
-  //   },
-  // });
+ 
   const { data: allClasses = [], refetch } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {

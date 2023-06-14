@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 
@@ -45,6 +45,22 @@ const Classes = () => {
       });
   };
 
+  const navigate = useNavigate();
+  const handleSelect = () => {
+    if (!user) {
+      Swal.fire({
+        title: "You have to log in first to select class",
+        showCancelButton: true,
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          navigate('/login');
+        }
+      });
+    }
+  };
+
   return (
     <div className="mt-8">
       <h3 className="text-3xl text-center font-bold">
@@ -69,13 +85,26 @@ const Classes = () => {
                   Price: ${c.price}
                 </p>
 
-                <button
+                {/* <button
                   onClick={() => handleSelectClass(c)}
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
                 >
                   Select
-                </button>
+                </button> */}
+                {user ? (
+                     <button
+                     onClick={() => handleSelectClass(c)}
+                     type="button"
+                     className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
+                   >
+                     Select
+                   </button>
+                    ) : (
+                      
+                        <button onClick={handleSelect} className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 "> Select</button>
+                      
+                    )}
               </div>
             </div>
           </div>

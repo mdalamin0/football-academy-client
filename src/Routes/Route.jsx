@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <Classes></Classes>,
         loader: () =>
           fetch(
-            "https://shippo-football-academy-server-mdalamin0.vercel.app/allClasses"
+            'https://shippo-football-academy-server-mdalamin0.vercel.app/classes'
           ),
       },
       {
