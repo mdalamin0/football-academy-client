@@ -1,14 +1,23 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllClassesAction } from "../../Redux/Actions/Actions";
 
 const Classes = () => {
-  const { user, loading } = useAuth();
-  const allClasses = useLoaderData();
+  const {isLoading, classes, error} = useSelector(state => state.classesReducer);
+  const dispatch = useDispatch();
 
- 
+  useEffect(() => {
+    dispatch(getAllClassesAction());
+  },[dispatch]);
+console.log(classes)
+  const { user, loading } = useAuth();
+
 
   const handleSelectClass = (singleClass) => {
+    
     if (loading) {
       return <div>Loading....</div>;
     }
@@ -62,12 +71,15 @@ const Classes = () => {
   };
 
   return (
+    <>
     <div className="mt-8">
       <h3 className="text-3xl text-center font-bold">
-        Our Available Class: {allClasses.length}
+        Our Available Class: {classes.length}
       </h3>
+      {isLoading && <h2 className="text-center text-2xl font-semibold py-16">Loading...</h2>}
+      {error && <h2 className="text-center text-red-600 text-2xl font-semibold py-16">{error}</h2>}
       <div className="p-4 md:p-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        {allClasses.map((c) => (
+        {classes.map((c) => (
           <div key={c._id}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <img className="rounded-t-lg w-full h-60" src={c.image} alt="" />
@@ -84,14 +96,6 @@ const Classes = () => {
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Price: ${c.price}
                 </p>
-
-                {/* <button
-                  onClick={() => handleSelectClass(c)}
-                  type="button"
-                  className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
-                >
-                  Select
-                </button> */}
                 {user ? (
                      <button
                      onClick={() => handleSelectClass(c)}
@@ -111,6 +115,7 @@ const Classes = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

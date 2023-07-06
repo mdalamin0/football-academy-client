@@ -31,19 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "classes",
-        element: <Classes></Classes>,
-        loader: () =>
-          fetch(
-            'https://shippo-football-academy-server-mdalamin0.vercel.app/classes'
-          ),
+        element: <Classes></Classes>
       },
       {
         path: "instructors",
-        element: <Instructors></Instructors>,
-        loader: () =>
-          fetch(
-            "https://shippo-football-academy-server-mdalamin0.vercel.app/allInstructors"
-          ),
+        element: <Instructors></Instructors>
       },
       {
         path: "login",

@@ -1,18 +1,28 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { useLoaderData } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllInstructorAction } from "../../Redux/Actions/Actions";
 
 const Instructors = () => {
-  const allInstructors = useLoaderData();
+  const {isLoading, instructors, error} = useSelector(state => state.instructorReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllInstructorAction());
+  },[dispatch]);
+
+
   return (
     <div className="mt-8">
        <Helmet>
                 <title>Shippo-football-Academy | instructor</title>
             </Helmet>
       <h3 className="text-3xl text-center font-bold">
-        Our Available Instructor: {allInstructors.length}
+        Our Available Instructor: {instructors.length}
       </h3>
+      {isLoading && <h2 className="text-center text-2xl font-semibold py-16">Loading...</h2>}
+      {error && <h2 className="text-center text-red-600 text-2xl font-semibold py-16">{error}</h2>}
       <div className="p-4 md:p-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        {allInstructors.map((i) => (
+        {instructors.map((i) => (
           <div key={i._id}>
             <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <img className="rounded-t-lg w-full h-60" src={i.photoUrl} alt="" />
