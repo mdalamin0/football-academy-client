@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { addClassesAction } from "../../Redux/Actions/Actions";
 
 const AddClass = () => {
+  const dispatch = useDispatch();
+
   const { user } = useAuth();
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -21,20 +24,9 @@ const AddClass = () => {
       price: data.price,
     };
 
-    fetch(
-      "https://shippo-football-academy-server-mdalamin0.vercel.app/addClass",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newClass),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        reset();
-        if (data.insertedId) {
+    dispatch(
+      addClassesAction(newClass, (res) => {
+        if (res.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -43,7 +35,33 @@ const AddClass = () => {
             timer: 1500,
           });
         }
-      });
+      })
+    );
+
+    // fetch(
+    //   "https://shippo-football-academy-server-mdalamin0.vercel.app/addClass",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(newClass),
+    //   }
+    // )
+
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       reset();
+    //       if (data.insertedId) {
+    //         Swal.fire({
+    //           position: "top-end",
+    //           icon: "success",
+    //           title: "Successfully Added",
+    //           showConfirmButton: false,
+    //           timer: 1500,
+    //         });
+    //       }
+    //     });
   };
 
   return (
